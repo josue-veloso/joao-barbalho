@@ -22,13 +22,29 @@ sideMenu.addEventListener('click', (e) => {
 
 // Portfolio Content
 const portfolioContent = {
-    'about': `
-        <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 48px; margin-bottom: 30px;">ABOUT</h2>
-            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Editor de vídeo com mais de 10 anos de experiência em cinema, documentários e publicidade.</p>
-            <p style="font-size: 18px; line-height: 1.8;">Especializado em narrativa visual e montagem criativa.</p>
-        </div>
-    `,
+    'about': {
+        pt: `
+            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 48px; margin-bottom: 30px;">SOBRE</h2>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Editor de vídeo com mais de 10 anos de experiência em cinema, documentários e publicidade.</p>
+                <p style="font-size: 18px; line-height: 1.8;">Especializado em narrativa visual e montagem criativa.</p>
+            </div>
+        `,
+        en: `
+            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 48px; margin-bottom: 30px;">ABOUT</h2>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Video editor with over 10 years of experience in film, documentaries and advertising.</p>
+                <p style="font-size: 18px; line-height: 1.8;">Specialized in visual storytelling and creative editing.</p>
+            </div>
+        `,
+        es: `
+            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 48px; margin-bottom: 30px;">ACERCA DE</h2>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Editor de video con más de 10 años de experiencia en cine, documentales y publicidad.</p>
+                <p style="font-size: 18px; line-height: 1.8;">Especializado en narrativa visual y montaje creativo.</p>
+            </div>
+        `
+    },
     'film-editor': `
         <div class="grid-item">
             <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop" alt="Projeto 1">
@@ -213,7 +229,15 @@ const portfolioContent = {
 
 // Load content based on category
 function loadContent(category) {
-    portfolioGrid.innerHTML = portfolioContent[category] || portfolioContent['film-editor'];
+    let content;
+    
+    if (category === 'about') {
+        content = portfolioContent[category][currentLang];
+    } else {
+        content = portfolioContent[category];
+    }
+    
+    portfolioGrid.innerHTML = content || portfolioContent['film-editor'];
     
     // Add click handlers for mobile
     const gridItems = document.querySelectorAll('.grid-item');
@@ -245,22 +269,15 @@ categoryLinks.forEach(link => {
         // Update body data-category
         body.setAttribute('data-category', category);
         
-        // Update category label
-        const categoryText = translations[currentLang][{
-            'about': 'about',
-            'film-editor': 'filmEditor',
-            'documentary': 'documentary',
-            'advertising': 'advertising',
-            'assistant-editor': 'assistantEditor'
-        }[category]] || link.textContent;
-        categoryLabel.textContent = categoryText;
+        // Always keep "MONTADOR" label
+        categoryLabel.textContent = 'MONTADOR';
         
         // Update header link based on category
         if (category === 'advertising') {
-            headerLink.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/></svg>Vimeo';
+            headerLink.innerHTML = '<i class="fi fi-brands-vimeo"></i>';
             headerLink.href = 'https://vimeo.com';
         } else {
-            headerLink.textContent = 'IMDb';
+            headerLink.innerHTML = '<i class="fi fi-brands-imdb"></i>';
             headerLink.href = 'https://www.imdb.com';
         }
         
@@ -340,19 +357,8 @@ const translations = {
 
 // Initialize language on page load
 document.documentElement.lang = currentLang;
-updateCategoryLabel(body.getAttribute('data-category'));
+categoryLabel.textContent = 'MONTADOR';
 updateMenuItems();
-
-function updateCategoryLabel(category) {
-    const labels = {
-        'film-editor': translations[currentLang].filmEditor,
-        'documentary': translations[currentLang].documentary,
-        'advertising': translations[currentLang].advertising,
-        'assistant-editor': translations[currentLang].assistantEditor,
-        'about': translations[currentLang].about
-    };
-    categoryLabel.textContent = labels[category] || labels['film-editor'];
-}
 
 function updateMenuItems() {
     const menuItems = document.querySelectorAll('.side-menu a[data-category]');
