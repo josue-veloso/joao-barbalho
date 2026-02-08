@@ -277,9 +277,6 @@ categoryLinks.forEach(link => {
 // Load initial content
 loadContent('film-editor');
 
-// Language Selector
-const langButtons = document.querySelectorAll('.lang-btn');
-
 // Detect browser language
 function detectBrowserLanguage() {
     const browserLang = navigator.language || navigator.userLanguage;
@@ -341,38 +338,10 @@ const translations = {
     }
 };
 
-langButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        langButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        
-        currentLang = this.getAttribute('data-lang');
-        document.documentElement.lang = currentLang;
-        
-        // Update category label
-        const currentCategory = body.getAttribute('data-category');
-        updateCategoryLabel(currentCategory);
-        
-        // Update menu items
-        updateMenuItems();
-    });
-});
-
 // Initialize language on page load
-function initLanguage() {
-    langButtons.forEach(btn => {
-        if (btn.getAttribute('data-lang') === currentLang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-    document.documentElement.lang = currentLang;
-    updateCategoryLabel(body.getAttribute('data-category'));
-    updateMenuItems();
-}
-
-initLanguage();
+document.documentElement.lang = currentLang;
+updateCategoryLabel(body.getAttribute('data-category'));
+updateMenuItems();
 
 function updateCategoryLabel(category) {
     const labels = {
