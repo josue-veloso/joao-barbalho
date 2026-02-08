@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOÃO BARBALHO | Editor de Cinema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-category="film-editor">
+    <header>
+        <div class="header-left">
+            <h1 class="logo">JOÃO BARBALHO</h1>
+            <span class="category-label">EDITOR DE CINEMA</span>
+        </div>
+        <div class="header-right">
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <a href="https://www.imdb.com" target="_blank" class="imdb-link">IMDb</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SIDE MENU -->
+    <nav class="side-menu" id="sideMenu">
+        <button class="close-menu" id="closeMenu">&times;</button>
+        <ul>
+            <li><a href="#" data-category="about">SOBRE</a></li>
+            <li><a href="#" data-category="film-editor" class="active">EDITOR DE CINEMA</a></li>
+            <li><a href="#" data-category="documentary">DOCUMENTÁRIO</a></li>
+            <li><a href="#" data-category="advertising">PUBLICIDADE</a></li>
+            <li><a href="#" data-category="assistant-editor">ASSISTENTE DE EDIÇÃO</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="portfolio-grid" id="portfolioGrid">
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
