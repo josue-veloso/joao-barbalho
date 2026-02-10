@@ -1,0 +1,10 @@
+{
+  "category": "film-editor",
+  "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop",
+  "role": "EDITOR",
+  "duration": "CURTA METRAGEM, 15MIN",
+  "director": "DIR MARIA SANTOS",
+  "producer": "PRODUTORA INDEPENDENTE",
+  "imdb": "https://www.imdb.com/title/tt0111161/",
+  "order": 1
+}

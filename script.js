@@ -229,7 +229,7 @@ const portfolioContent = {
 
 // Load content based on category
 async function loadContent(category) {
-    let content;
+    let content = '';
     
     if (category === 'about') {
         // Carregar dados do CMS
@@ -247,8 +247,34 @@ async function loadContent(category) {
             console.error('Erro ao carregar dados:', error);
             content = portfolioContent[category][currentLang];
         }
-    } else {
+    } else if (category === 'advertising') {
+        // Advertising continua com conteúdo fixo por enquanto
         content = portfolioContent[category];
+    } else {
+        // Carregar projetos do CMS para outras categorias
+        try {
+            const projects = await loadProjects(category);
+            if (projects.length > 0) {
+                content = projects.map(project => `
+                    <div class="grid-item">
+                        <img src="${project.image}" alt="${project.role}">
+                        <div class="project-info">
+                            <p>${project.role}</p>
+                            <p>${project.duration}</p>
+                            <p>${project.director}</p>
+                            <p>${project.producer}</p>
+                            ${project.imdb ? `<a href="${project.imdb}" target="_blank" class="imdb-btn">IMDb</a>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                // Fallback para conteúdo fixo se não houver projetos
+                content = portfolioContent[category];
+            }
+        } catch (error) {
+            console.error('Erro ao carregar projetos:', error);
+            content = portfolioContent[category];
+        }
     }
     
     portfolioGrid.innerHTML = content || portfolioContent['film-editor'];
@@ -263,6 +289,30 @@ async function loadContent(category) {
             this.classList.add('active');
         });
     });
+}
+
+// Função para carregar projetos do CMS
+async function loadProjects(category) {
+    try {
+        // Buscar lista de arquivos JSON na pasta projects
+        const response = await fetch('https://api.github.com/repos/josue-veloso/joao-barbalho/contents/content/projects');
+        const files = await response.json();
+        
+        // Carregar cada arquivo JSON
+        const projectPromises = files
+            .filter(file => file.name.endsWith('.json'))
+            .map(file => fetch(file.download_url).then(r => r.json()));
+        
+        const allProjects = await Promise.all(projectPromises);
+        
+        // Filtrar por categoria e ordenar
+        return allProjects
+            .filter(p => p.category === category)
+            .sort((a, b) => (a.order || 0) - (b.order || 0));
+    } catch (error) {
+        console.error('Erro ao buscar projetos:', error);
+        return [];
+    }
 }
 
 // Category Navigation

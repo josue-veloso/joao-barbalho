@@ -20,3 +20,19 @@ collections:
           - {label: "Texto (EN)", name: "text_en", widget: "text"}
           - {label: "Título (ES)", name: "title_es", widget: "string", default: "ACERCA DE"}
           - {label: "Texto (ES)", name: "text_es", widget: "text"}
+  
+  - name: "projects"
+    label: "Projetos"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Categoria", name: "category", widget: "select", options: [{label: "Film Editor", value: "film-editor"}, {label: "Documentary", value: "documentary"}, {label: "Advertising", value: "advertising"}, {label: "Assistant Editor", value: "assistant-editor"}]}
+      - {label: "Imagem/Cartaz", name: "image", widget: "image", hint: "Para Film Editor e Assistant Editor: 600x900px (vertical). Para Documentary: 1920x1080px (horizontal)"}
+      - {label: "Função", name: "role", widget: "string", hint: "Ex: EDITOR, MONTADOR, ASSISTENTE DE MONTAGEM"}
+      - {label: "Tipo e Duração", name: "duration", widget: "string", hint: "Ex: CURTA METRAGEM, 15MIN"}
+      - {label: "Diretor", name: "director", widget: "string", hint: "Ex: DIR MARIA SANTOS"}
+      - {label: "Produtora", name: "producer", widget: "string", hint: "Ex: NETFLIX | O2 FILMES"}
+      - {label: "Link IMDb", name: "imdb", widget: "string", required: false, hint: "URL completa do IMDb"}
+      - {label: "Link Vimeo (apenas para Advertising)", name: "vimeo", widget: "string", required: false, hint: "ID do vídeo do Vimeo (ex: 148751763)"}
+      - {label: "Ordem de Exibição", name: "order", widget: "number", default: 0, value_type: "int", hint: "Número menor aparece primeiro"}

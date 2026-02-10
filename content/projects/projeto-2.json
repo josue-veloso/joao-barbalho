@@ -1,0 +1,10 @@
+{
+  "category": "film-editor",
+  "image": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=900&fit=crop",
+  "role": "MONTADOR",
+  "duration": "LONGA METRAGEM, 90MIN",
+  "director": "DIR FELIPE BLIDER",
+  "producer": "BOUTIQUE FILMES | PARIS FILMES",
+  "imdb": "https://www.imdb.com/title/tt0468569/",
+  "order": 2
+}
