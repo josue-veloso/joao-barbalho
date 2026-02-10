@@ -1,0 +1,38 @@
+name: Update Projects Index
+
+on:
+  push:
+    paths:
+      - 'content/projects/*.json'
+    branches:
+      - main
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate projects index
+        run: |
+          echo '{"projects":[' > content/projects.json
+          first=true
+          for file in content/projects/*.json; do
+            if [ "$(basename $file)" != "projects.json" ]; then
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo ',' >> content/projects.json
+              fi
+              cat "$file" | jq -c '.' >> content/projects.json
+            fi
+          done
+          echo ']}' >> content/projects.json
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add content/projects.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update projects index"
+          git push

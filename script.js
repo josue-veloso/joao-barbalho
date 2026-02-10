@@ -294,19 +294,16 @@ async function loadContent(category) {
 // Função para carregar projetos do CMS
 async function loadProjects(category) {
     try {
-        // Lista de possíveis arquivos de projetos
-        const maxProjects = 20; // Aumentar para suportar mais projetos
-        const projectPromises = [];
-        
-        for (let i = 1; i <= maxProjects; i++) {
-            projectPromises.push(
-                fetch(`/content/projects/projeto-${i}.json`)
-                    .then(r => r.ok ? r.json() : null)
-                    .catch(() => null)
-            );
+        // Carregar índice de projetos
+        const response = await fetch('/content/projects.json');
+        if (!response.ok) {
+            console.error('Erro ao carregar projetos');
+            return [];
         }
         
-        const allProjects = (await Promise.all(projectPromises)).filter(p => p !== null);
+        const data = await response.json();
+        const allProjects = data.projects || [];
+        
         console.log('Projetos carregados:', allProjects);
         
         // Filtrar por categoria e ordenar
