@@ -26,6 +26,8 @@ collections:
     folder: "content/projects"
     create: true
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "Categoria", name: "category", widget: "select", options: [{label: "Film Editor", value: "film-editor"}, {label: "Documentary", value: "documentary"}, {label: "Advertising", value: "advertising"}, {label: "Assistant Editor", value: "assistant-editor"}]}
       - {label: "Imagem/Cartaz", name: "image", widget: "image", hint: "Para Film Editor e Assistant Editor: 600x900px (vertical). Para Documentary: 1920x1080px (horizontal)"}
