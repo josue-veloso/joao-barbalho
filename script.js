@@ -294,16 +294,29 @@ async function loadContent(category) {
 // Função para carregar projetos do CMS
 async function loadProjects(category) {
     try {
-        // Buscar lista de arquivos JSON na pasta projects
-        const response = await fetch('https://api.github.com/repos/josue-veloso/joao-barbalho/contents/content/projects');
-        const files = await response.json();
+        // Tentar carregar do diretório local primeiro
+        const projectFiles = [
+            'projeto-1.json',
+            'projeto-2.json',
+            'projeto-3.json',
+            'projeto-4.json',
+            'projeto-5.json',
+            'projeto-6.json'
+        ];
         
-        // Carregar cada arquivo JSON
-        const projectPromises = files
-            .filter(file => file.name.endsWith('.json'))
-            .map(file => fetch(file.download_url).then(r => r.json()));
+        const projectPromises = projectFiles.map(async (file) => {
+            try {
+                const response = await fetch(`/content/projects/${file}`);
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch {
+                return null;
+            }
+        });
         
-        const allProjects = await Promise.all(projectPromises);
+        const allProjects = (await Promise.all(projectPromises)).filter(p => p !== null);
         
         // Filtrar por categoria e ordenar
         return allProjects
