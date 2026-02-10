@@ -294,34 +294,28 @@ async function loadContent(category) {
 // Função para carregar projetos do CMS
 async function loadProjects(category) {
     try {
-        // Tentar carregar do diretório local primeiro
-        const projectFiles = [
-            'projeto-1.json',
-            'projeto-2.json',
-            'projeto-3.json',
-            'projeto-4.json',
-            'projeto-5.json',
-            'projeto-6.json'
-        ];
+        // Lista de possíveis arquivos de projetos
+        const maxProjects = 20; // Aumentar para suportar mais projetos
+        const projectPromises = [];
         
-        const projectPromises = projectFiles.map(async (file) => {
-            try {
-                const response = await fetch(`/content/projects/${file}`);
-                if (response.ok) {
-                    return await response.json();
-                }
-                return null;
-            } catch {
-                return null;
-            }
-        });
+        for (let i = 1; i <= maxProjects; i++) {
+            projectPromises.push(
+                fetch(`/content/projects/projeto-${i}.json`)
+                    .then(r => r.ok ? r.json() : null)
+                    .catch(() => null)
+            );
+        }
         
         const allProjects = (await Promise.all(projectPromises)).filter(p => p !== null);
+        console.log('Projetos carregados:', allProjects);
         
         // Filtrar por categoria e ordenar
-        return allProjects
+        const filtered = allProjects
             .filter(p => p.category === category)
             .sort((a, b) => (a.order || 0) - (b.order || 0));
+        
+        console.log(`Projetos para categoria ${category}:`, filtered);
+        return filtered;
     } catch (error) {
         console.error('Erro ao buscar projetos:', error);
         return [];
