@@ -228,11 +228,25 @@ const portfolioContent = {
 };
 
 // Load content based on category
-function loadContent(category) {
+async function loadContent(category) {
     let content;
     
     if (category === 'about') {
-        content = portfolioContent[category][currentLang];
+        // Carregar dados do CMS
+        try {
+            const response = await fetch('/content/about.json');
+            const data = await response.json();
+            const langKey = currentLang;
+            content = `
+                <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 style="font-size: 48px; margin-bottom: 30px;">${data['title_' + langKey]}</h2>
+                    <p style="font-size: 18px; line-height: 1.8; white-space: pre-line;">${data['text_' + langKey]}</p>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Erro ao carregar dados:', error);
+            content = portfolioContent[category][currentLang];
+        }
     } else {
         content = portfolioContent[category];
     }

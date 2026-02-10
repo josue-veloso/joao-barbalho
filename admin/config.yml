@@ -8,39 +8,15 @@ public_folder: "/images"
 
 collections:
   - name: "config"
-    label: "Configurações do Site"
+    label: "Configurações"
     files:
-      - label: "Sobre"
+      - label: "Página Sobre"
         name: "about"
         file: "content/about.json"
         fields:
-          - {label: "Título PT", name: "title_pt", widget: "string"}
-          - {label: "Texto PT", name: "text_pt", widget: "text"}
-          - {label: "Título EN", name: "title_en", widget: "string"}
-          - {label: "Texto EN", name: "text_en", widget: "text"}
-          - {label: "Título ES", name: "title_es", widget: "string"}
-          - {label: "Texto ES", name: "text_es", widget: "text"}
-      
-      - label: "Cores"
-        name: "colors"
-        file: "content/colors.json"
-        fields:
-          - {label: "Cor de Fundo (Film Editor)", name: "bg_film", widget: "color"}
-          - {label: "Cor de Fundo (Documentary)", name: "bg_doc", widget: "color"}
-          - {label: "Cor de Fundo (Advertising)", name: "bg_adv", widget: "color"}
-  
-  - name: "projects"
-    label: "Projetos"
-    folder: "content/projects"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Categoria", name: "category", widget: "select", options: ["film-editor", "documentary", "advertising", "assistant-editor"]}
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Imagem", name: "image", widget: "image"}
-      - {label: "Função", name: "role", widget: "string"}
-      - {label: "Duração", name: "duration", widget: "string"}
-      - {label: "Diretor", name: "director", widget: "string"}
-      - {label: "Produtora", name: "producer", widget: "string"}
-      - {label: "Link IMDb", name: "imdb", widget: "string", required: false}
-      - {label: "Link Vimeo", name: "vimeo", widget: "string", required: false}
+          - {label: "Título (PT)", name: "title_pt", widget: "string", default: "SOBRE"}
+          - {label: "Texto (PT)", name: "text_pt", widget: "text"}
+          - {label: "Título (EN)", name: "title_en", widget: "string", default: "ABOUT"}
+          - {label: "Texto (EN)", name: "text_en", widget: "text"}
+          - {label: "Título (ES)", name: "title_es", widget: "string", default: "ACERCA DE"}
+          - {label: "Texto (ES)", name: "text_es", widget: "text"}
