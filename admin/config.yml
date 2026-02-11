@@ -2,8 +2,6 @@ backend:
   name: github
   repo: josue-veloso/joao-barbalho
   branch: main
-  base_url: https://joaobarbalho.com
-  auth_endpoint: /oauth/callback
 
 media_folder: "images"
 public_folder: "/images"
