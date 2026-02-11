@@ -19,6 +19,17 @@
       "producer": "BOUTIQUE FILMES | PARIS FILMES",
       "imdb": "https://www.imdb.com/title/tt0468569/",
       "order": 2
+    },
+    {
+      "category": "film-editor",
+      "image": "https://m.media-amazon.com/images/M/MV5BNjQ5Nzg5NmUtZGI4Ni00YTIwLThlMjgtMzc0MjBlMDBkZGQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "role": "MONTADOR",
+      "duration": "SERIE, 60 MIN",
+      "director": "HEITOR DHALIA",
+      "producer": "NETFLIX",
+      "imdb": "https://www.imdb.com/pt/title/tt38091266/",
+      "vimeo": "",
+      "order": 0
     }
   ]
 }
