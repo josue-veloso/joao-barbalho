@@ -6,6 +6,48 @@ if (token) {
   showAdmin();
 }
 
+function showModal(title, message, isConfirm = false) {
+  return new Promise((resolve) => {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMessage').textContent = message;
+    document.getElementById('modal').classList.remove('hidden');
+    
+    const confirmBtn = document.getElementById('modalConfirm');
+    const cancelBtn = document.getElementById('modalCancel');
+    
+    if (isConfirm) {
+      cancelBtn.classList.remove('hidden');
+      confirmBtn.textContent = 'Sim';
+      confirmBtn.onclick = () => {
+        document.getElementById('modal').classList.add('hidden');
+        resolve(true);
+      };
+      cancelBtn.onclick = () => {
+        document.getElementById('modal').classList.add('hidden');
+        resolve(false);
+      };
+    } else {
+      cancelBtn.classList.add('hidden');
+      confirmBtn.textContent = 'OK';
+      confirmBtn.onclick = () => {
+        document.getElementById('modal').classList.add('hidden');
+        resolve(true);
+      };
+    }
+  });
+}
+
+function updateImageHint() {
+  const category = document.getElementById('category').value;
+  const hint = document.getElementById('imageHint');
+  
+  if (category === 'documentary') {
+    hint.textContent = 'Documentary: 1920x1080px (horizontal, 16:9)';
+  } else {
+    hint.textContent = 'Film Editor/Assistant Editor: 600x900px (vertical, 2:3)';
+  }
+}
+
 function loginGitHub() {
   const token = prompt('Cole seu Personal Access Token do GitHub:\n\n1. Acesse: https://github.com/settings/tokens\n2. Clique em "Generate new token (classic)"\n3. Marque "repo" scope\n4. Copie o token e cole aqui');
   
@@ -32,7 +74,7 @@ async function showAdmin() {
     loadProjects();
     loadAbout();
   } catch (error) {
-    alert('Token inválido. Faça login novamente.');
+    await showModal('Erro', 'Token inválido. Faça login novamente.');
     logout();
   }
 }
@@ -127,7 +169,8 @@ async function editProject(index) {
 }
 
 async function deleteProject(index) {
-  if (!confirm('Tem certeza que deseja deletar este projeto?')) return;
+  const confirmed = await showModal('Confirmar', 'Tem certeza que deseja deletar este projeto?', true);
+  if (!confirmed) return;
   
   const data = await githubAPI('GET', `https://api.github.com/repos/${REPO}/contents/content/projects.json`);
   const content = JSON.parse(atob(data.content));
@@ -140,7 +183,7 @@ async function deleteProject(index) {
     sha: data.sha
   });
   
-  alert('Projeto deletado!');
+  await showModal('Sucesso', 'Projeto deletado com sucesso!');
   loadProjects();
 }
 
@@ -179,7 +222,7 @@ async function saveProject(e) {
     sha: data.sha
   });
   
-  alert('Projeto salvo!');
+  await showModal('Sucesso', 'Projeto salvo com sucesso!');
   cancelProjectForm();
   loadProjects();
 }
@@ -204,5 +247,5 @@ async function saveAbout(e) {
     sha: data.sha
   });
   
-  alert('Página Sobre atualizada!');
+  await showModal('Sucesso', 'Página Sobre atualizada com sucesso!');
 }
