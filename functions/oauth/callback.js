@@ -22,27 +22,16 @@ export async function onRequest(context) {
     
     const data = await tokenResponse.json();
     
-    const content = JSON.stringify(data);
-    
+    // Return token directly as JSON for CMS
     return new Response(
-      `<!DOCTYPE html>
-      <html>
-      <head><title>Success</title></head>
-      <body>
-        <script>
-          (function() {
-            function receiveMessage(e) {
-              window.opener.postMessage(
-                'authorization:github:success:' + ${JSON.stringify(content)},
-                e.origin
-              );
-            }
-            window.addEventListener('message', receiveMessage, false);
-            window.opener.postMessage('authorizing:github', '*');
-          })();
-        </script>
-      </body>
-      </html>`,
+      `<script>
+        (function() {
+          var data = ${JSON.stringify(data)};
+          var message = 'authorization:github:success:' + JSON.stringify(data);
+          window.opener.postMessage(message, window.opener.location.origin);
+          window.close();
+        })();
+      </script>`,
       { headers: { 'Content-Type': 'text/html' } }
     );
   }
