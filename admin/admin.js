@@ -1,35 +1,17 @@
-const GITHUB_CLIENT_ID = 'Ov23liEod8d7JwbzjnMb';
 const REPO = 'josue-veloso/joao-barbalho';
 let token = localStorage.getItem('github_token');
 
 // Check if already logged in
 if (token) {
   showAdmin();
-} else {
-  // Check for OAuth callback
-  const params = new URLSearchParams(window.location.search);
-  if (params.has('code')) {
-    exchangeCode(params.get('code'));
-  }
 }
 
 function loginGitHub() {
-  const redirectUri = window.location.origin + window.location.pathname;
-  window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${encodeURIComponent(redirectUri)}`;
-}
-
-async function exchangeCode(code) {
-  try {
-    const response = await fetch(`/oauth/callback?code=${code}`);
-    const data = await response.json();
-    if (data.access_token) {
-      token = data.access_token;
-      localStorage.setItem('github_token', token);
-      window.history.replaceState({}, document.title, window.location.pathname);
-      showAdmin();
-    }
-  } catch (error) {
-    alert('Erro no login. Tente novamente.');
+  const token = prompt('Cole seu Personal Access Token do GitHub:\n\n1. Acesse: https://github.com/settings/tokens\n2. Clique em "Generate new token (classic)"\n3. Marque "repo" scope\n4. Copie o token e cole aqui');
+  
+  if (token) {
+    localStorage.setItem('github_token', token);
+    location.reload();
   }
 }
 
@@ -44,11 +26,16 @@ async function showAdmin() {
   document.getElementById('adminScreen').classList.remove('hidden');
   
   // Get user info
-  const user = await githubAPI('GET', 'https://api.github.com/user');
-  document.getElementById('userName').textContent = user.login;
-  
-  loadProjects();
-  loadAbout();
+  try {
+    const user = await githubAPI('GET', 'https://api.github.com/user');
+    document.getElementById('userName').textContent = user.login;
+    
+    loadProjects();
+    loadAbout();
+  } catch (error) {
+    alert('Token inválido. Faça login novamente.');
+    logout();
+  }
 }
 
 async function githubAPI(method, url, data) {
