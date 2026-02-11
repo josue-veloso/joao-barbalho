@@ -1,7 +1,7 @@
 const REPO = 'josue-veloso/joao-barbalho';
 let token = localStorage.getItem('github_token');
+let currentEditIndex = null;
 
-// Check if already logged in
 if (token) {
   showAdmin();
 }
@@ -25,7 +25,6 @@ async function showAdmin() {
   document.getElementById('loginScreen').classList.add('hidden');
   document.getElementById('adminScreen').classList.remove('hidden');
   
-  // Get user info
   try {
     const user = await githubAPI('GET', 'https://api.github.com/user');
     document.getElementById('userName').textContent = user.login;
@@ -59,11 +58,13 @@ async function loadProjects() {
   const content = JSON.parse(atob(data.content));
   
   const list = document.getElementById('projectsList');
-  list.innerHTML = content.projects.map(p => `
-    <div class=\"project-card\" onclick='editProject(${JSON.stringify(p)})'>
-      <img src=\"${p.image}\" alt=\"${p.role}\">
+  list.innerHTML = content.projects.map((p, index) => `
+    <div class="project-card">
+      <img src="${p.image}" alt="${p.role}">
       <strong>${p.role}</strong><br>
-      <small>${p.category}</small>
+      <small>${p.category}</small><br>
+      <button onclick='editProject(${index})' class="btn btn-primary" style="margin-top: 10px; padding: 5px 10px; font-size: 12px;">Editar</button>
+      <button onclick='deleteProject(${index})' class="btn" style="margin-top: 10px; padding: 5px 10px; font-size: 12px; background: #dc3545;">Deletar</button>
     </div>
   `).join('');
 }
@@ -90,8 +91,57 @@ function showTab(tab) {
 }
 
 function showProjectForm() {
+  currentEditIndex = null;
+  document.getElementById('projectForm').querySelector('h2').textContent = 'Adicionar Projeto';
+  document.getElementById('category').value = 'film-editor';
+  document.getElementById('image').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('duration').value = '';
+  document.getElementById('director').value = '';
+  document.getElementById('producer').value = '';
+  document.getElementById('imdb').value = '';
+  document.getElementById('vimeo').value = '';
+  document.getElementById('order').value = '0';
   document.getElementById('projectForm').classList.remove('hidden');
   document.getElementById('projectsList').classList.add('hidden');
+}
+
+async function editProject(index) {
+  const data = await githubAPI('GET', `https://api.github.com/repos/${REPO}/contents/content/projects.json`);
+  const content = JSON.parse(atob(data.content));
+  const project = content.projects[index];
+  
+  currentEditIndex = index;
+  document.getElementById('projectForm').querySelector('h2').textContent = 'Editar Projeto';
+  document.getElementById('category').value = project.category;
+  document.getElementById('image').value = project.image;
+  document.getElementById('role').value = project.role;
+  document.getElementById('duration').value = project.duration;
+  document.getElementById('director').value = project.director;
+  document.getElementById('producer').value = project.producer;
+  document.getElementById('imdb').value = project.imdb || '';
+  document.getElementById('vimeo').value = project.vimeo || '';
+  document.getElementById('order').value = project.order;
+  document.getElementById('projectForm').classList.remove('hidden');
+  document.getElementById('projectsList').classList.add('hidden');
+}
+
+async function deleteProject(index) {
+  if (!confirm('Tem certeza que deseja deletar este projeto?')) return;
+  
+  const data = await githubAPI('GET', `https://api.github.com/repos/${REPO}/contents/content/projects.json`);
+  const content = JSON.parse(atob(data.content));
+  
+  content.projects.splice(index, 1);
+  
+  await githubAPI('PUT', `https://api.github.com/repos/${REPO}/contents/content/projects.json`, {
+    message: 'Delete project via admin',
+    content: btoa(JSON.stringify(content, null, 2)),
+    sha: data.sha
+  });
+  
+  alert('Projeto deletado!');
+  loadProjects();
 }
 
 function cancelProjectForm() {
@@ -114,16 +164,17 @@ async function saveProject(e) {
     order: parseInt(document.getElementById('order').value)
   };
   
-  // Get current projects
   const data = await githubAPI('GET', `https://api.github.com/repos/${REPO}/contents/content/projects.json`);
   const content = JSON.parse(atob(data.content));
   
-  // Add new project
-  content.projects.push(project);
+  if (currentEditIndex !== null) {
+    content.projects[currentEditIndex] = project;
+  } else {
+    content.projects.push(project);
+  }
   
-  // Update file
   await githubAPI('PUT', `https://api.github.com/repos/${REPO}/contents/content/projects.json`, {
-    message: 'Add new project via admin',
+    message: currentEditIndex !== null ? 'Update project via admin' : 'Add new project via admin',
     content: btoa(JSON.stringify(content, null, 2)),
     sha: data.sha
   });
