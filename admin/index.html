@@ -127,7 +127,13 @@
   </style>
 </head>
 <body>
-  <div id="modal" class="modal hidden">
+  <script>
+    // Force modal to be hidden immediately
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('modal').style.display = 'none';
+    });
+  </script>
+  <div id="modal" class="modal hidden" style="display: none;">
     <div class="modal-content">
       <h3 id="modalTitle"></h3>
       <p id="modalMessage"></p>

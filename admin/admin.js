@@ -17,12 +17,14 @@ function showModal(title, message, isConfirm = false) {
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalMessage').textContent = message;
     modal.classList.remove('hidden');
+    modal.style.display = 'flex';
     
     const confirmBtn = document.getElementById('modalConfirm');
     const cancelBtn = document.getElementById('modalCancel');
     
     const closeModal = (result) => {
       modal.classList.add('hidden');
+      modal.style.display = 'none';
       resolve(result);
     };
     
