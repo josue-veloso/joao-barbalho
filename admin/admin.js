@@ -8,31 +8,33 @@ if (token) {
 
 function showModal(title, message, isConfirm = false) {
   return new Promise((resolve) => {
+    const modal = document.getElementById('modal');
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalMessage').textContent = message;
-    document.getElementById('modal').classList.remove('hidden');
+    modal.classList.remove('hidden');
     
     const confirmBtn = document.getElementById('modalConfirm');
     const cancelBtn = document.getElementById('modalCancel');
     
+    const closeModal = (result) => {
+      modal.classList.add('hidden');
+      resolve(result);
+    };
+    
+    // Close on background click
+    modal.onclick = (e) => {
+      if (e.target === modal) closeModal(false);
+    };
+    
     if (isConfirm) {
       cancelBtn.classList.remove('hidden');
       confirmBtn.textContent = 'Sim';
-      confirmBtn.onclick = () => {
-        document.getElementById('modal').classList.add('hidden');
-        resolve(true);
-      };
-      cancelBtn.onclick = () => {
-        document.getElementById('modal').classList.add('hidden');
-        resolve(false);
-      };
+      confirmBtn.onclick = () => closeModal(true);
+      cancelBtn.onclick = () => closeModal(false);
     } else {
       cancelBtn.classList.add('hidden');
       confirmBtn.textContent = 'OK';
-      confirmBtn.onclick = () => {
-        document.getElementById('modal').classList.add('hidden');
-        resolve(true);
-      };
+      confirmBtn.onclick = () => closeModal(true);
     }
   });
 }
