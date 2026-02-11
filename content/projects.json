@@ -30,17 +30,6 @@
       "producer": "BOUTIQUE FILMES | PARIS FILMES",
       "imdb": "https://www.imdb.com/title/tt0468569/",
       "order": 2
-    },
-    {
-      "category": "film-editor",
-      "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/7/77/Os_donos_do_jogo.jpg/250px-Os_donos_do_jogo.jpg",
-      "role": "Montador",
-      "duration": "120 min",
-      "director": "Heitor Dhalia",
-      "producer": "Netflix",
-      "imdb": "https://www.imdb.com/pt/title/tt38091266/",
-      "vimeo": "",
-      "order": 0
     }
   ]
 }
