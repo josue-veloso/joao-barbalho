@@ -22,17 +22,24 @@ export async function onRequest(context) {
     
     const data = await tokenResponse.json();
     
+    const content = JSON.stringify(data);
+    
     return new Response(
       `<!DOCTYPE html>
       <html>
       <head><title>Success</title></head>
       <body>
         <script>
-          window.opener.postMessage(
-            'authorization:github:success:${JSON.stringify(data)}',
-            window.location.origin
-          );
-          window.close();
+          (function() {
+            function receiveMessage(e) {
+              window.opener.postMessage(
+                'authorization:github:success:' + ${JSON.stringify(content)},
+                e.origin
+              );
+            }
+            window.addEventListener('message', receiveMessage, false);
+            window.opener.postMessage('authorizing:github', '*');
+          })();
         </script>
       </body>
       </html>`,
