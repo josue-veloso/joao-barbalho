@@ -151,7 +151,7 @@ async function deleteProject(index) {
     sha: data.sha
   });
   
-  alert('Projeto deletado com sucesso!');
+  alert('Projeto deletado com sucesso!\n\nO site será atualizado em 1-2 minutos.');
   loadProjects();
 }
 
@@ -190,7 +190,7 @@ async function saveProject(e) {
     sha: data.sha
   });
   
-  alert('Projeto salvo com sucesso!');
+  alert('Projeto salvo com sucesso!\n\nO site será atualizado em 1-2 minutos.');
   cancelProjectForm();
   loadProjects();
 }
@@ -215,5 +215,5 @@ async function saveAbout(e) {
     sha: data.sha
   });
   
-  alert('Página Sobre atualizada com sucesso!');
+  alert('Página Sobre atualizada com sucesso!\n\nO site será atualizado em 1-2 minutos.');
 }
