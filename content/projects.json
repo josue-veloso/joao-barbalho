@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "category": "documentary",
-      "image": "/images/captura-de-tela-de-2026-02-09-11-24-16.png",
-      "role": "MONTADOR",
-      "duration": "LONGA, 120 MIN",
-      "director": "DIR MARIA SANTOS",
-      "producer": "NETFLIX",
-      "imdb": "",
-      "vimeo": "",
-      "order": 0
-    },
-    {
       "category": "film-editor",
       "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop",
       "role": "EDITOR",
