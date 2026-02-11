@@ -2,48 +2,8 @@ const REPO = 'josue-veloso/joao-barbalho';
 let token = localStorage.getItem('github_token');
 let currentEditIndex = null;
 
-// Ensure modal starts hidden
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('modal').classList.add('hidden');
-});
-
 if (token) {
   showAdmin();
-}
-
-function showModal(title, message, isConfirm = false) {
-  return new Promise((resolve) => {
-    const modal = document.getElementById('modal');
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalMessage').textContent = message;
-    modal.classList.remove('hidden');
-    modal.style.display = 'flex';
-    
-    const confirmBtn = document.getElementById('modalConfirm');
-    const cancelBtn = document.getElementById('modalCancel');
-    
-    const closeModal = (result) => {
-      modal.classList.add('hidden');
-      modal.style.display = 'none';
-      resolve(result);
-    };
-    
-    // Close on background click
-    modal.onclick = (e) => {
-      if (e.target === modal) closeModal(false);
-    };
-    
-    if (isConfirm) {
-      cancelBtn.classList.remove('hidden');
-      confirmBtn.textContent = 'Sim';
-      confirmBtn.onclick = () => closeModal(true);
-      cancelBtn.onclick = () => closeModal(false);
-    } else {
-      cancelBtn.classList.add('hidden');
-      confirmBtn.textContent = 'OK';
-      confirmBtn.onclick = () => closeModal(true);
-    }
-  });
 }
 
 function updateImageHint() {
@@ -83,7 +43,7 @@ async function showAdmin() {
     loadProjects();
     loadAbout();
   } catch (error) {
-    await showModal('Erro', 'Token inválido. Faça login novamente.');
+    alert('Token inválido. Faça login novamente.');
     logout();
   }
 }
@@ -178,8 +138,7 @@ async function editProject(index) {
 }
 
 async function deleteProject(index) {
-  const confirmed = await showModal('Confirmar', 'Tem certeza que deseja deletar este projeto?', true);
-  if (!confirmed) return;
+  if (!confirm('Tem certeza que deseja deletar este projeto?')) return;
   
   const data = await githubAPI('GET', `https://api.github.com/repos/${REPO}/contents/content/projects.json`);
   const content = JSON.parse(atob(data.content));
@@ -192,7 +151,7 @@ async function deleteProject(index) {
     sha: data.sha
   });
   
-  await showModal('Sucesso', 'Projeto deletado com sucesso!');
+  alert('Projeto deletado com sucesso!');
   loadProjects();
 }
 
@@ -231,7 +190,7 @@ async function saveProject(e) {
     sha: data.sha
   });
   
-  await showModal('Sucesso', 'Projeto salvo com sucesso!');
+  alert('Projeto salvo com sucesso!');
   cancelProjectForm();
   loadProjects();
 }
@@ -256,5 +215,5 @@ async function saveAbout(e) {
     sha: data.sha
   });
   
-  await showModal('Sucesso', 'Página Sobre atualizada com sucesso!');
+  alert('Página Sobre atualizada com sucesso!');
 }
