@@ -2,6 +2,11 @@ const REPO = 'josue-veloso/joao-barbalho';
 let token = localStorage.getItem('github_token');
 let currentEditIndex = null;
 
+// Ensure modal starts hidden
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('modal').classList.add('hidden');
+});
+
 if (token) {
   showAdmin();
 }
