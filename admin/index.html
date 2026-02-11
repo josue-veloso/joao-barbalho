@@ -1,11 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Admin - João Barbalho</title>
+  <meta charset="utf-8">
+  <title>Admin - João Barbalho</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 { color: #333; }
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      background: #24292e;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .btn:hover { background: #444; }
+    .info {
+      background: #f6f8fa;
+      padding: 20px;
+      border-radius: 5px;
+      margin: 30px 0;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <h1>Painel de Administração</h1>
+  <p>Gerencie o conteúdo do site através do GitHub</p>
+  
+  <div class="info">
+    <h3>📝 Como editar:</h3>
+    <p><strong>Página Sobre:</strong> Edite <code>content/about.json</code></p>
+    <p><strong>Projetos:</strong> Adicione/edite arquivos em <code>content/projects/</code></p>
+    <p><strong>Imagens:</strong> Faça upload na pasta <code>images/</code></p>
+  </div>
+  
+  <a href="https://github.com/josue-veloso/joao-barbalho/tree/main/content" class="btn" target="_blank">
+    📁 Editar Conteúdo
+  </a>
+  
+  <a href="https://github.com/josue-veloso/joao-barbalho/upload/main/images" class="btn" target="_blank">
+    🖼️ Upload Imagens
+  </a>
+  
+  <a href="https://github.com/josue-veloso/joao-barbalho/new/main/content/projects" class="btn" target="_blank">
+    ➕ Novo Projeto
+  </a>
 </body>
 </html>
