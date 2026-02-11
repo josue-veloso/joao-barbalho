@@ -1,8 +1,8 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   
-  const CLIENT_ID = 'Ov23liEod8d7JwbzjnMb';
-  const CLIENT_SECRET = 'e5a5b895b41cf68bec3adf098f158fe7efa7bc63';
+  const CLIENT_ID = context.env.GITHUB_CLIENT_ID;
+  const CLIENT_SECRET = context.env.GITHUB_CLIENT_SECRET;
   
   if (url.searchParams.has('code')) {
     const code = url.searchParams.get('code');
