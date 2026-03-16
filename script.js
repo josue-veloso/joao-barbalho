@@ -262,9 +262,9 @@ async function loadContent(category) {
             const data = await response.json();
             const langKey = currentLang;
             content = `
-                <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
-                    <h2 style="font-size: 48px; margin-bottom: 30px;">${data['title_' + langKey]}</h2>
-                    <p style="font-size: 18px; line-height: 1.8; white-space: pre-line;">${data['text_' + langKey]}</p>
+                <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
+                    <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
+                    <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">${data['text_' + langKey]}</p>
                 </div>
             `;
         } catch (error) {
