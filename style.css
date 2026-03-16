@@ -503,16 +503,15 @@ body[data-category="documentary"] .menu-toggle:hover span {
 }
 
 body[data-category="advertising"] {
-    background: linear-gradient(135deg, #ff6600 0%, #ff8833 100%);
+    background: #FFE600;
 }
 
 body[data-category="advertising"] header::before {
-    background: linear-gradient(135deg, #ff6600 0%, #ff8833 100%);
+    background: #FFE600;
 }
 
 body[data-category="advertising"] .logo {
-    color: #0033ff;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    color: #000;
 }
 
 body[data-category="advertising"] .category-label {
@@ -530,6 +529,24 @@ body[data-category="advertising"] .imdb-link:hover {
 
 body[data-category="advertising"] .menu-toggle span {
     background: #000;
+}
+
+body[data-category="assistant-editor"] {
+    background: #3B0764;
+}
+
+body[data-category="assistant-editor"] header::before {
+    background: #3B0764;
+}
+
+body[data-category="assistant-editor"] .logo,
+body[data-category="assistant-editor"] .category-label,
+body[data-category="assistant-editor"] .imdb-link {
+    color: #fff;
+}
+
+body[data-category="assistant-editor"] .menu-toggle span {
+    background: #fff;
 }
 
 /* RESPONSIVE - TABLET */

@@ -24,24 +24,48 @@ sideMenu.addEventListener('click', (e) => {
 const portfolioContent = {
     'about': {
         pt: `
-            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 48px; margin-bottom: 30px;">SOBRE</h2>
-                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Editor de vídeo com mais de 10 anos de experiência em cinema, documentários e publicidade.</p>
-                <p style="font-size: 18px; line-height: 1.8;">Especializado em narrativa visual e montagem criativa.</p>
+            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
+                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Montador pernambucano residente em São Paulo com mais de 10 anos de experiência no audiovisual brasileiro.
+
+Atuo na pós-produção como montador/editor, com passagem por diversos mercados e formatos: publicidade, documentários, séries de TV e longas-metragens. Ao longo da carreira, colaborei com produtoras como Paranoid, O2, Gullane, Boutique entre outras, e com plataformas e canais como Netflix, HBO, Globoplay, além de diretores independentes.
+
+Formado em Comunicação, alio bagagem técnica e sensibilidade artística, trabalhando com diferentes fluxos de edição e me adaptando às demandas criativas de cada produção. Sigo em constante evolução profissional, sempre aberto a novos desafios e colaborações que expandem meu repertório e contribuam para novos projetos instigantes.
+
+Montador associado a AMC - Associação de Montadores de Cinema.
+
+Telefone: (11) 976621191
+Email: joaob.pos@gmail.com</p>
             </div>
         `,
         en: `
-            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 48px; margin-bottom: 30px;">ABOUT</h2>
-                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Video editor with over 10 years of experience in film, documentaries and advertising.</p>
-                <p style="font-size: 18px; line-height: 1.8;">Specialized in visual storytelling and creative editing.</p>
+            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
+                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Editor from Pernambuco based in São Paulo with over 10 years of experience in Brazilian audiovisual.
+
+I work in post-production as an editor, with experience across various markets and formats: advertising, documentaries, TV series and feature films. Throughout my career, I have collaborated with production companies such as Paranoid, O2, Gullane, Boutique among others, and with platforms and channels such as Netflix, HBO, Globoplay, as well as independent directors.
+
+Graduated in Communication, I combine technical background and artistic sensibility, working with different editing workflows and adapting to the creative demands of each production. I am in constant professional evolution, always open to new challenges and collaborations.
+
+Editor associated with AMC - Associação de Montadores de Cinema.
+
+Phone: (11) 976621191
+Email: joaob.pos@gmail.com</p>
             </div>
         `,
         es: `
-            <div style="padding: 60px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 48px; margin-bottom: 30px;">ACERCA DE</h2>
-                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">Editor de video con más de 10 años de experiencia en cine, documentales y publicidad.</p>
-                <p style="font-size: 18px; line-height: 1.8;">Especializado en narrativa visual y montaje creativo.</p>
+            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
+                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
+                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Montador pernambucano residente en São Paulo con más de 10 años de experiencia en el audiovisual brasileño.
+
+Trabajo en postproducción como montador/editor, con experiencia en diversos mercados y formatos: publicidad, documentales, series de TV y largometrajes. A lo largo de mi carrera, he colaborado con productoras como Paranoid, O2, Gullane, Boutique entre otras, y con plataformas y canales como Netflix, HBO, Globoplay, además de directores independientes.
+
+Graduado en Comunicación, combino bagaje técnico y sensibilidad artística, trabajando con diferentes flujos de edición y adaptándome a las demandas creativas de cada producción.
+
+Montador asociado a AMC - Associação de Montadores de Cinema.
+
+Teléfono: (11) 976621191
+Email: joaob.pos@gmail.com</p>
             </div>
         `
     },
@@ -338,7 +362,7 @@ categoryLinks.forEach(link => {
         body.setAttribute('data-category', category);
         
         // Always keep "MONTADOR" label
-        categoryLabel.textContent = 'MONTADOR';
+        categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
         
         // Update header link based on category
         if (category === 'advertising') {
@@ -374,11 +398,11 @@ let currentLang = detectBrowserLanguage();
 
 const translations = {
     pt: {
-        filmEditor: 'EDITOR DE CINEMA',
+        filmEditor: 'CINEMA & SÉRIES',
         documentary: 'DOCUMENTÁRIO',
         advertising: 'PUBLICIDADE',
         assistantEditor: 'ASSISTENTE DE EDIÇÃO',
-        about: 'SOBRE',
+        about: 'CONTATO',
         editor: 'EDITOR',
         montador: 'MONTADOR',
         assistente: 'ASSISTENTE DE MONTAGEM',
@@ -390,11 +414,11 @@ const translations = {
         agencia: 'AGÊNCIA'
     },
     en: {
-        filmEditor: 'FILM EDITOR',
+        filmEditor: 'CINEMA & SERIES',
         documentary: 'DOCUMENTARY',
         advertising: 'ADVERTISING',
         assistantEditor: 'ASSISTANT EDITOR',
-        about: 'ABOUT',
+        about: 'CONTACT',
         editor: 'EDITOR',
         montador: 'EDITOR',
         assistente: 'ASSISTANT EDITOR',
@@ -406,11 +430,11 @@ const translations = {
         agencia: 'AGENCY'
     },
     es: {
-        filmEditor: 'EDITOR DE CINE',
+        filmEditor: 'CINEMA & SERIES',
         documentary: 'DOCUMENTAL',
         advertising: 'PUBLICIDAD',
         assistantEditor: 'ASISTENTE DE EDICIÓN',
-        about: 'ACERCA DE',
+        about: 'CONTACTO',
         editor: 'EDITOR',
         montador: 'MONTADOR',
         assistente: 'ASISTENTE DE MONTAJE',
@@ -425,7 +449,7 @@ const translations = {
 
 // Initialize language on page load
 document.documentElement.lang = currentLang;
-categoryLabel.textContent = 'MONTADOR';
+categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
 updateMenuItems();
 
 function updateMenuItems() {
