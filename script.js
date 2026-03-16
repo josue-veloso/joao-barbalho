@@ -24,9 +24,9 @@ sideMenu.addEventListener('click', (e) => {
 const portfolioContent = {
     'about': {
         pt: `
-            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
-                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Montador pernambucano residente em São Paulo com mais de 10 anos de experiência no audiovisual brasileiro.
+            <div style="display:flex; flex-direction:column; align-items:center; padding: 80px 40px; max-width: 900px; margin: 0 auto;">
+                <img src="/images/imagem_bio_joaobarbalho.jpg" alt="João Barbalho" style="width: 100%; max-width: 500px; height: auto; object-fit: cover; margin-bottom: 40px;">
+                <p style="font-size: clamp(15px, 2vw, 18px); line-height: 1.9; white-space: pre-line; text-align: center; max-width: 700px;">Montador pernambucano residente em São Paulo com mais de 10 anos de experiência no audiovisual brasileiro.
 
 Atuo na pós-produção como montador/editor, com passagem por diversos mercados e formatos: publicidade, documentários, séries de TV e longas-metragens. Ao longo da carreira, colaborei com produtoras como Paranoid, O2, Gullane, Boutique entre outras, e com plataformas e canais como Netflix, HBO, Globoplay, além de diretores independentes.
 
@@ -39,9 +39,9 @@ Email: joaob.pos@gmail.com</p>
             </div>
         `,
         en: `
-            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
-                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Editor from Pernambuco based in São Paulo with over 10 years of experience in Brazilian audiovisual.
+            <div style="display:flex; flex-direction:column; align-items:center; padding: 80px 40px; max-width: 900px; margin: 0 auto;">
+                <img src="/images/imagem_bio_joaobarbalho.jpg" alt="João Barbalho" style="width: 100%; max-width: 500px; height: auto; object-fit: cover; margin-bottom: 40px;">
+                <p style="font-size: clamp(15px, 2vw, 18px); line-height: 1.9; white-space: pre-line; text-align: center; max-width: 700px;">Editor from Pernambuco based in São Paulo with over 10 years of experience in Brazilian audiovisual.
 
 I work in post-production as an editor, with experience across various markets and formats: advertising, documentaries, TV series and feature films. Throughout my career, I have collaborated with production companies such as Paranoid, O2, Gullane, Boutique among others, and with platforms and channels such as Netflix, HBO, Globoplay, as well as independent directors.
 
@@ -54,9 +54,9 @@ Email: joaob.pos@gmail.com</p>
             </div>
         `,
         es: `
-            <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
-                <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
-                <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">Montador pernambucano residente en São Paulo con más de 10 años de experiencia en el audiovisual brasileño.
+            <div style="display:flex; flex-direction:column; align-items:center; padding: 80px 40px; max-width: 900px; margin: 0 auto;">
+                <img src="/images/imagem_bio_joaobarbalho.jpg" alt="João Barbalho" style="width: 100%; max-width: 500px; height: auto; object-fit: cover; margin-bottom: 40px;">
+                <p style="font-size: clamp(15px, 2vw, 18px); line-height: 1.9; white-space: pre-line; text-align: center; max-width: 700px;">Montador pernambucano residente en São Paulo con más de 10 años de experiencia en el audiovisual brasileño.
 
 Trabajo en postproducción como montador/editor, con experiencia en diversos mercados y formatos: publicidad, documentales, series de TV y largometrajes. A lo largo de mi carrera, he colaborado con productoras como Paranoid, O2, Gullane, Boutique entre otras, y con plataformas y canales como Netflix, HBO, Globoplay, además de directores independientes.
 
@@ -262,37 +262,34 @@ async function loadContent(category) {
             const data = await response.json();
             const langKey = currentLang;
             content = `
-                <div style="padding: 60px 20px; max-width: 800px; margin: 0 auto; text-align: center;">
-                    <img src="https://via.placeholder.com/200x200" alt="João Barbalho" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;">
-                    <p style="font-size: 16px; line-height: 1.9; white-space: pre-line;">${data['text_' + langKey]}</p>
+                <div style="display:flex; flex-direction:column; align-items:center; padding: 80px 40px; max-width: 900px; margin: 0 auto;">
+                    <img src="/images/imagem_bio_joaobarbalho.jpg" alt="João Barbalho" style="width: 100%; max-width: 500px; height: auto; object-fit: cover; margin-bottom: 40px;">
+                    <p style="font-size: clamp(15px, 2vw, 18px); line-height: 1.9; white-space: pre-line; text-align: center; max-width: 700px;">${data['text_' + langKey]}</p>
                 </div>
             `;
         } catch (error) {
             console.error('Erro ao carregar dados:', error);
             content = portfolioContent[category][currentLang];
         }
-    } else if (category === 'advertising') {
-        // Advertising continua com conteúdo fixo por enquanto
-        content = portfolioContent[category];
     } else {
-        // Carregar projetos do CMS para outras categorias
         try {
             const projects = await loadProjects(category);
             if (projects.length > 0) {
                 content = projects.map(project => `
                     <div class="grid-item">
-                        <img src="${project.image}" alt="${project.role}">
+                        <img src="${project.image}" alt="${project.title || project.role}" style="${project.imagePosition ? 'object-position:' + project.imagePosition : ''}">
                         <div class="project-info">
+                            <p>${project.title || ''}</p>
                             <p>${project.role}</p>
-                            <p>${project.duration}</p>
+                            <p>${project.year ? project.year + (project.format ? ' · ' + project.format : '') : (project.format || '')}</p>
                             <p>${project.director}</p>
                             <p>${project.producer}</p>
+                            ${project.video ? `<a href="${project.video}" target="_blank" class="imdb-btn">ASSISTIR</a>` : ''}
                             ${project.imdb ? `<a href="${project.imdb}" target="_blank" class="imdb-btn">IMDb</a>` : ''}
                         </div>
                     </div>
                 `).join('');
             } else {
-                // Fallback para conteúdo fixo se não houver projetos
                 content = portfolioContent[category];
             }
         } catch (error) {
@@ -326,7 +323,7 @@ async function loadProjects(category) {
         }
         
         const data = await response.json();
-        const allProjects = data.projects || [];
+        const allProjects = Array.isArray(data) ? data : (data.projects || []);
         
         console.log('Projetos carregados:', allProjects);
         
@@ -367,10 +364,10 @@ categoryLinks.forEach(link => {
         // Update header link based on category
         if (category === 'advertising') {
             headerLink.innerHTML = '<i class="fi fi-brands-vimeo"></i>';
-            headerLink.href = 'https://vimeo.com';
+            headerLink.href = 'https://vimeo.com/joaobarbalho';
         } else {
             headerLink.innerHTML = '<i class="fi fi-brands-imdb"></i>';
-            headerLink.href = 'https://www.imdb.com';
+            headerLink.href = 'https://www.imdb.com/name/nm11060144/';
         }
         
         // Load content

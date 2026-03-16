@@ -301,7 +301,7 @@ body[data-category="assistant-editor"] .grid-item {
 /* Documentary - 1 column, 4 rows, widescreen format */
 body[data-category="documentary"] .portfolio-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 25vh;
+    grid-auto-rows: 40vh;
     gap: 0;
     padding: 100px 0 0;
     min-height: calc(100vh - 100px);

@@ -1,35 +1,318 @@
-{
-  "projects": [
-    {
-      "category": "film-editor",
-      "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop",
-      "role": "EDITOR",
-      "duration": "CURTA METRAGEM, 15MIN",
-      "director": "DIR MARIA SANTOS",
-      "producer": "PRODUTORA INDEPENDENTE",
-      "imdb": "https://www.imdb.com/title/tt0111161/",
-      "order": 1
-    },
-    {
-      "category": "film-editor",
-      "image": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=900&fit=crop",
-      "role": "MONTADOR",
-      "duration": "LONGA METRAGEM, 90MIN",
-      "director": "DIR FELIPE BLIDER",
-      "producer": "BOUTIQUE FILMES | PARIS FILMES",
-      "imdb": "https://www.imdb.com/title/tt0468569/",
-      "order": 2
-    },
-    {
-      "category": "film-editor",
-      "image": "https://m.media-amazon.com/images/M/MV5BNjQ5Nzg5NmUtZGI4Ni00YTIwLThlMjgtMzc0MjBlMDBkZGQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-      "role": "MONTADOR",
-      "duration": "SERIE, 60 MIN",
-      "director": "HEITOR DHALIA",
-      "producer": "NETFLIX",
-      "imdb": "https://www.imdb.com/pt/title/tt38091266/",
-      "vimeo": "",
-      "order": 0
-    }
-  ]
-}
+[
+  {
+    "category": "film-editor",
+    "title": "O Gênio de Crime",
+    "role": "Montador",
+    "year": "2026",
+    "format": "Longa Metragem",
+    "director": "Dir. Lipe Binder",
+    "producer": "Boutique, Globo e Paris Filmes",
+    "image": "/images/O_GENIO_DO_CRIME.jpg",
+    "imdb": "https://www.imdb.com/title/tt39444949/"
+  },
+  {
+    "category": "film-editor",
+    "title": "Os Donos do Jogo",
+    "role": "Montador",
+    "year": "2025",
+    "format": "Série de TV",
+    "director": "Dir. Geral Heitor Dhalia",
+    "producer": "Paranoid e Netflix",
+    "image": "/images/OS_DONOS_DO_JOGO.jpg",
+    "imdb": "https://www.imdb.com/title/tt38091266/"
+  },
+  {
+    "category": "film-editor",
+    "title": "De Menor",
+    "role": "Montador",
+    "year": "2025",
+    "format": "Série de TV",
+    "director": "Dir. Caru Alves de Souza",
+    "producer": "Canal Brasil",
+    "image": "/images/DE MENOR.jpg",
+    "imdb": "https://www.imdb.com/title/tt35487907/"
+  },
+  {
+    "category": "film-editor",
+    "title": "Pedaço de Mim",
+    "role": "Montador Adicional",
+    "year": "2024",
+    "format": "Série de TV",
+    "director": "Dir. Geral Maurício Farias",
+    "producer": "A Fábrica e Netflix",
+    "image": "/images/PEDACO_DE_MIM.jpg",
+    "imdb": "https://www.imdb.com/title/tt27505298/"
+  },
+  {
+    "category": "film-editor",
+    "title": "Uma Garota Comum",
+    "role": "Montador",
+    "year": "2024",
+    "format": "Série de TV",
+    "director": "Dir. Geral Juliana Vonlanten",
+    "producer": "CineFilm e Disney",
+    "image": "/images/UMA_GAROTA_COMUM.jpg",
+    "imdb": ""
+  },
+  {
+    "category": "film-editor",
+    "title": "Tudo Igual… SQN",
+    "role": "Montador",
+    "year": "2023",
+    "format": "Série de TV",
+    "director": "Dir. Geral Juliana Vonlanten",
+    "producer": "CineFilm e Disney",
+    "image": "/images/TUDO_IGUAL_SQN.jpg",
+    "imdb": "https://www.imdb.com/title/tt13574490/"
+  },
+  {
+    "category": "film-editor",
+    "title": "DNA do Crime",
+    "role": "Montador Adicional",
+    "year": "2023",
+    "format": "Série de TV",
+    "director": "Dir. Geral Heitor Dhalia",
+    "producer": "Paranoid e Netflix",
+    "image": "/images/DNA_DO_CRIME.jpg",
+    "imdb": "https://www.imdb.com/title/tt22459586/"
+  },
+  {
+    "category": "film-editor",
+    "title": "Carga Máxima",
+    "role": "Montador Adicional",
+    "year": "2023",
+    "format": "Longa Metragem",
+    "director": "Dir. Tomas Portela",
+    "producer": "Gullane e Netflix",
+    "image": "/images/CARGA_MAXIMA.jpg",
+    "imdb": "https://www.imdb.com/title/tt16427938/"
+  },
+  {
+    "category": "documentary",
+    "title": "Mariana x BHP",
+    "role": "Montador",
+    "year": "2026",
+    "format": "Longa Documental",
+    "director": "Dir. Renan Flumian",
+    "producer": "Vertical",
+    "image": "/images/MARIANAxBHP.jpg",
+    "imdb": "https://www.imdb.com/title/tt38582239/"
+  },
+  {
+    "category": "documentary",
+    "title": "Camisa 9",
+    "role": "Montador",
+    "year": "2025",
+    "format": "Curta Documental",
+    "director": "Dir. Guilherme Baptista",
+    "producer": "HBO Max",
+    "image": "/images/CAMISA_9.jpg",
+    "imdb": ""
+  },
+  {
+    "category": "documentary",
+    "title": "Melodia Ancestral",
+    "role": "Montador",
+    "year": "2025",
+    "format": "Curta Documental",
+    "director": "Dir. Beatriz Costa",
+    "producer": "HBO Max",
+    "image": "/images/MELODIA_ANCESTRAL.jpg",
+    "imagePosition": "50% 30%",
+    "imdb": ""
+  },
+  {
+    "category": "documentary",
+    "title": "Brega Funk - Ritmo & Sobrevivência",
+    "role": "Montador",
+    "year": "2024",
+    "format": "Curta Documental",
+    "director": "Dir. Will Souza",
+    "producer": "HBO Max",
+    "image": "/images/BREGA_FUNK.jpg",
+    "imagePosition": "50% 30%",
+    "imdb": ""
+  },
+  {
+    "category": "documentary",
+    "title": "Índios no Brasil",
+    "role": "Montador",
+    "year": "2016",
+    "format": "Série Documental",
+    "director": "Dir. Adelina Pontual e Camilo Cavalcante",
+    "producer": "Urso Filmes e TV Brasil",
+    "image": "/images/INDIOS_DO_BRASIL.png",
+    "imdb": "https://www.imdb.com/title/tt10987218/"
+  },
+  {
+    "category": "advertising",
+    "title": "Ronaldo - Feito de Futuro",
+    "role": "Montador Adicional",
+    "year": "2024",
+    "format": "Publicidade",
+    "director": "",
+    "producer": "O2 Filmes",
+    "image": "https://img.youtube.com/vi/BSAIC8SpWvY/hqdefault.jpg",
+    "imdb": "",
+    "video": "https://www.youtube.com/watch?v=BSAIC8SpWvY"
+  },
+  {
+    "category": "advertising",
+    "title": "Campanha Sarto para Prefeito de Fortaleza",
+    "role": "Montador",
+    "year": "2020",
+    "format": "Campanha Política",
+    "director": "",
+    "producer": "",
+    "image": "https://vumbnail.com/537714348.jpg",
+    "imdb": "",
+    "video": "https://vimeo.com/537714348"
+  },
+  {
+    "category": "advertising",
+    "title": "Mães do Pina - Trailer",
+    "role": "Montador",
+    "year": "",
+    "format": "Trailer",
+    "director": "",
+    "producer": "Urso Filmes",
+    "image": "https://vumbnail.com/128899130.jpg",
+    "imdb": "",
+    "video": "https://vimeo.com/128899130"
+  },
+  {
+    "category": "advertising",
+    "title": "Carnaval do Recife - Como Foi",
+    "role": "Montador",
+    "year": "2015",
+    "format": "Publicidade",
+    "director": "",
+    "producer": "Urso Filmes",
+    "image": "https://vumbnail.com/355380219.jpg",
+    "imdb": "",
+    "video": "https://vimeo.com/355380219"
+  },
+  {
+    "category": "advertising",
+    "title": "Fim do Ano Governo de Pernambuco",
+    "role": "Montador",
+    "year": "2014",
+    "format": "Publicidade",
+    "director": "",
+    "producer": "Urso Filmes",
+    "image": "https://vumbnail.com/355380239.jpg",
+    "imdb": "",
+    "video": "https://vimeo.com/355380239"
+  },
+  {
+    "category": "advertising",
+    "title": "Natal Prefeitura do Recife",
+    "role": "Montador",
+    "year": "2013",
+    "format": "Publicidade",
+    "director": "",
+    "producer": "Urso Filmes",
+    "image": "https://vumbnail.com/537713012.jpg",
+    "imdb": "",
+    "video": "https://vimeo.com/537713012"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Sonhar com Leões",
+    "role": "Assistente de Edição",
+    "year": "2024",
+    "format": "Longa Metragem",
+    "director": "Dir. Paolo Marinou-Blanco",
+    "producer": "Capuri",
+    "image": "/images/SONHAR_COM_LEOES.jpg",
+    "imdb": "https://www.imdb.com/title/tt15063134/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Oeste Outra Vez",
+    "role": "Assistente de Edição",
+    "year": "2024",
+    "format": "Longa Metragem",
+    "director": "Dir. Erico Rassi",
+    "producer": "",
+    "image": "/images/OESTE_OUTRA_VEZ.jpg",
+    "imdb": "https://www.imdb.com/title/tt12636944/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Meu Nome é Gal",
+    "role": "Assistente de Edição",
+    "year": "2023",
+    "format": "Longa Metragem",
+    "director": "Dir. Dandara Ferreira e Lô Politi",
+    "producer": "Paris Filmes e Globo Filmes",
+    "image": "/images/MEU_NOME_E_GAL.jpg",
+    "imdb": "https://www.imdb.com/title/tt18244348/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "A Paixão Segundo G.H.",
+    "role": "Assistente de Edição",
+    "year": "2023",
+    "format": "Longa Metragem",
+    "director": "Dir. Luiz Fernando Carvalho",
+    "producer": "Paris Filmes",
+    "image": "/images/PAIXAO_SEGUNDO_GH.jpg",
+    "imdb": "https://www.imdb.com/title/tt11687126/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "O Jogo que Mudou a História",
+    "role": "Assistente de Edição",
+    "year": "2023",
+    "format": "Série de Ficção",
+    "director": "Dir. Claudio Borrelli, Matias Mariani e Heitor Dhalia",
+    "producer": "Paranoid, Afroreggae e Globoplay",
+    "image": "/images/O_JOGO_QUE_MUDOU_HIST.jpg",
+    "imdb": "https://www.imdb.com/title/tt24018576/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Cidade Invisível",
+    "role": "Assistente de Edição",
+    "year": "2021",
+    "format": "Série Ficção",
+    "director": "Dir. Geral Luis Carone",
+    "producer": "Pródigo Filmes e Netflix",
+    "image": "/images/CIDADE_INVISIVEL.jpg",
+    "imdb": "https://www.imdb.com/title/tt8878862/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Segunda Chamada",
+    "role": "Assistente de Edição",
+    "year": "2019 e 2021",
+    "format": "Série Ficção",
+    "director": "Dir. Joana Jabace",
+    "producer": "O2 Filmes e Globoplay",
+    "image": "/images/SEGUNDA_CHAMADA.jpg",
+    "imdb": "https://www.imdb.com/title/tt2856466/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "DPA 3: Uma Aventura no Fim do Mundo",
+    "role": "Assistente de Edição",
+    "year": "2020",
+    "format": "Longa Metragem",
+    "director": "Dir. Mauro Lima",
+    "producer": "Paris Filmes",
+    "image": "/images/DPA3.jpg",
+    "imdb": "https://www.imdb.com/title/tt10805260/"
+  },
+  {
+    "category": "assistant-editor",
+    "title": "Carcereiros: O Filme",
+    "role": "Assistente de Edição",
+    "year": "2019",
+    "format": "Longa Metragem",
+    "director": "Dir. José Eduardo Belmonte",
+    "producer": "Gullane e Globo Filmes",
+    "image": "/images/CARCEREIROS.jpg",
+    "imdb": "https://www.imdb.com/title/tt10839484/"
+  }
+]
