@@ -13,7 +13,7 @@ for file in content/projects/*.json; do
         else
             echo ',' >> content/projects.json
         fi
-        cat "$file" | tr -d '\n' >> content/projects.json
+        tr -d '\n' < "$file" >> content/projects.json
     fi
 done
 

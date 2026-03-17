@@ -217,7 +217,7 @@ Email: joaob.pos@gmail.com</p>
     `,
     'advertising': `
         <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/148751763?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://player.vimeo.com/video/148751763?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
             <div class="project-info">
                 <p>EDITOR</p>
                 <p>COMERCIAL COCA-COLA, 30SEG</p>
@@ -225,7 +225,7 @@ Email: joaob.pos@gmail.com</p>
             </div>
         </div>
         <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/179635463?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://player.vimeo.com/video/179635463?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
             <div class="project-info">
                 <p>MONTADOR</p>
                 <p>COMERCIAL NIKE, 60SEG</p>
@@ -233,7 +233,7 @@ Email: joaob.pos@gmail.com</p>
             </div>
         </div>
         <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/336812660?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://player.vimeo.com/video/336812660?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
             <div class="project-info">
                 <p>EDITOR</p>
                 <p>COMERCIAL APPLE, 45SEG</p>
@@ -241,7 +241,7 @@ Email: joaob.pos@gmail.com</p>
             </div>
         </div>
         <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/268896653?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://player.vimeo.com/video/268896653?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
             <div class="project-info">
                 <p>MONTADOR</p>
                 <p>COMERCIAL SAMSUNG, 30SEG</p>
