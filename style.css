@@ -12,7 +12,6 @@ body {
     transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -74,51 +73,6 @@ header::before {
     flex-shrink: 0;
 }
 
-.language-selector {
-    display: flex;
-    gap: 3px;
-}
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 4px 6px;
-    font-size: 9px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: all 0.3s;
-}
-
-.lang-btn.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-.lang-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-}
-
-/* Contraste para fundo claro (documentary) */
-body[data-category="documentary"] .lang-btn {
-    border-color: rgba(0, 0, 0, 0.3);
-    color: rgba(0, 0, 0, 0.6);
-}
-
-body[data-category="documentary"] .lang-btn.active {
-    background: rgba(0, 0, 0, 0.1);
-    color: #000;
-    border-color: rgba(0, 0, 0, 0.5);
-}
-
-body[data-category="documentary"] .lang-btn:hover {
-    background: rgba(0, 0, 0, 0.08);
-    color: #000;
-}
-
 .imdb-link {
     font-size: 32px;
     color: #fff;
@@ -140,7 +94,6 @@ body[data-category="documentary"] .lang-btn:hover {
     opacity: 0.8;
 }
 
-/* MENU TOGGLE */
 .menu-toggle {
     background: transparent;
     border: none;
@@ -177,7 +130,6 @@ body[data-category="documentary"] .lang-btn:hover {
     transform: translateX(-5px);
 }
 
-/* SIDE MENU */
 .side-menu {
     position: fixed;
     top: 0;
@@ -274,7 +226,6 @@ body[data-category="documentary"] .lang-btn:hover {
     transform: translateX(10px);
 }
 
-/* PORTFOLIO GRID */
 .portfolio-grid {
     padding: 100px 0 0;
     display: grid;
@@ -285,7 +236,6 @@ body[data-category="documentary"] .lang-btn:hover {
     margin: 0;
 }
 
-/* Film Editor & Assistant Editor - Poster format (A3 ratio) */
 body[data-category="film-editor"] .portfolio-grid,
 body[data-category="assistant-editor"] .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -298,7 +248,7 @@ body[data-category="assistant-editor"] .grid-item {
     aspect-ratio: 2/3;
 }
 
-/* Documentary - 1 column, 4 rows, widescreen format */
+
 body[data-category="documentary"] .portfolio-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 40vh;
@@ -313,7 +263,6 @@ body[data-category="documentary"] .grid-item {
     height: 100%;
 }
 
-/* Advertising - Video embeds */
 body[data-category="advertising"] .portfolio-grid {
     grid-template-columns: 1fr;
     padding: 100px 10px 10px;
@@ -462,7 +411,6 @@ body[data-category="advertising"] .grid-item iframe {
     background: #fff;
 }
 
-/* CATEGORY THEMES */
 body[data-category="film-editor"] {
     background-color: #000;
 }
@@ -549,7 +497,6 @@ body[data-category="assistant-editor"] .menu-toggle span {
     background: #fff;
 }
 
-/* RESPONSIVE - TABLET */
 @media (min-width: 768px) {
     header {
         padding: 30px 40px;
@@ -635,7 +582,6 @@ body[data-category="assistant-editor"] .menu-toggle span {
     }
 }
 
-/* RESPONSIVE - DESKTOP */
 @media (min-width: 1024px) {
     header {
         padding: 40px 80px;

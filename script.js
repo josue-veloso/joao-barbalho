@@ -1,4 +1,3 @@
-// Menu Toggle
 const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 const closeMenu = document.getElementById('closeMenu');
@@ -13,14 +12,12 @@ closeMenu.addEventListener('click', () => {
     sideMenu.classList.remove('active');
 });
 
-// Close menu when clicking outside
 sideMenu.addEventListener('click', (e) => {
     if (e.target === sideMenu) {
         sideMenu.classList.remove('active');
     }
 });
 
-// Portfolio Content (fallback)
 const portfolioContent = {
     'about': {
         pt: `
@@ -71,12 +68,43 @@ Email: joaob.pos@gmail.com</p>
     }
 };
 
-// Load content based on category
+function detectBrowserLanguage() {
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.startsWith('pt')) return 'pt';
+    if (browserLang.startsWith('es')) return 'es';
+    return 'en';
+}
+
+let currentLang = detectBrowserLanguage();
+
+const translations = {
+    pt: {
+        filmEditor: 'CINEMA & SÉRIES',
+        documentary: 'DOCUMENTÁRIO',
+        advertising: 'PUBLICIDADE',
+        assistantEditor: 'ASSISTENTE DE EDIÇÃO',
+        about: 'CONTATO'
+    },
+    en: {
+        filmEditor: 'CINEMA & SERIES',
+        documentary: 'DOCUMENTARY',
+        advertising: 'ADVERTISING',
+        assistantEditor: 'ASSISTANT EDITOR',
+        about: 'CONTACT'
+    },
+    es: {
+        filmEditor: 'CINEMA & SERIES',
+        documentary: 'DOCUMENTAL',
+        advertising: 'PUBLICIDAD',
+        assistantEditor: 'ASISTENTE DE EDICIÓN',
+        about: 'CONTACTO'
+    }
+};
+
 async function loadContent(category) {
     let content = '';
-    
+
     if (category === 'about') {
-        // Carregar dados do CMS
         try {
             const response = await fetch('/content/about.json');
             const data = await response.json();
@@ -88,8 +116,7 @@ async function loadContent(category) {
                 </div>
             `;
         } catch (error) {
-            console.error('Erro ao carregar dados:', error);
-            content = portfolioContent[category][currentLang];
+            content = portfolioContent['about'][currentLang];
         }
     } else {
         try {
@@ -116,153 +143,35 @@ async function loadContent(category) {
             content = portfolioContent['about'][currentLang];
         }
     }
-    
+
     portfolioGrid.innerHTML = content;
-    
-    // Add click handlers for mobile
+
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            // Remove active from all items
+        item.addEventListener('click', function() {
             gridItems.forEach(i => i.classList.remove('active'));
-            // Add active to clicked item
             this.classList.add('active');
         });
     });
 }
 
-// Função para carregar projetos do CMS
 async function loadProjects(category) {
     try {
-        // Carregar índice de projetos
         const response = await fetch('/content/projects.json');
-        if (!response.ok) {
-            console.error('Erro ao carregar projetos');
-            return [];
-        }
-        
+        if (!response.ok) return [];
         const data = await response.json();
         const allProjects = Array.isArray(data) ? data : (data.projects || []);
-        
-        const filtered = allProjects
+        return allProjects
             .filter(p => p.category === category)
             .sort((a, b) => (a.order || 0) - (b.order || 0));
-        
-        return filtered;
     } catch (error) {
-        console.error('Erro ao buscar projetos:', error);
         return [];
     }
 }
 
-// Category Navigation
 const categoryLinks = document.querySelectorAll('.side-menu a[data-category]');
 const categoryLabel = document.querySelector('.category-label');
 const headerLink = document.querySelector('.imdb-link');
-
-categoryLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        const category = link.getAttribute('data-category');
-        
-        // Update active state
-        categoryLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        
-        // Update body data-category
-        body.setAttribute('data-category', category);
-        
-        // Always keep "MONTADOR" label
-        categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
-        
-        // Update header link based on category
-        if (category === 'advertising') {
-            headerLink.innerHTML = '<i class="fi fi-brands-vimeo"></i>';
-            headerLink.href = 'https://vimeo.com/joaobarbalho';
-        } else {
-            headerLink.innerHTML = '<i class="fi fi-brands-imdb"></i>';
-            headerLink.href = 'https://www.imdb.com/name/nm11060144/';
-        }
-        
-        // Load content
-        loadContent(category);
-        
-        // Close menu with delay
-        setTimeout(() => {
-            sideMenu.classList.remove('active');
-        }, 100);
-    });
-});
-
-// Load initial content
-loadContent('film-editor');
-
-// Detect browser language
-function detectBrowserLanguage() {
-    const browserLang = navigator.language || navigator.userLanguage;
-    if (browserLang.startsWith('pt')) return 'pt';
-    if (browserLang.startsWith('es')) return 'es';
-    return 'en';
-}
-
-let currentLang = detectBrowserLanguage();
-
-const translations = {
-    pt: {
-        filmEditor: 'CINEMA & SÉRIES',
-        documentary: 'DOCUMENTÁRIO',
-        advertising: 'PUBLICIDADE',
-        assistantEditor: 'ASSISTENTE DE EDIÇÃO',
-        about: 'CONTATO',
-        editor: 'EDITOR',
-        montador: 'MONTADOR',
-        assistente: 'ASSISTENTE DE MONTAGEM',
-        curta: 'CURTA METRAGEM',
-        longa: 'LONGA METRAGEM',
-        serie: 'SÉRIE',
-        doc: 'DOCUMENTÁRIO',
-        comercial: 'COMERCIAL',
-        agencia: 'AGÊNCIA'
-    },
-    en: {
-        filmEditor: 'CINEMA & SERIES',
-        documentary: 'DOCUMENTARY',
-        advertising: 'ADVERTISING',
-        assistantEditor: 'ASSISTANT EDITOR',
-        about: 'CONTACT',
-        editor: 'EDITOR',
-        montador: 'EDITOR',
-        assistente: 'ASSISTANT EDITOR',
-        curta: 'SHORT FILM',
-        longa: 'FEATURE FILM',
-        serie: 'SERIES',
-        doc: 'DOCUMENTARY',
-        comercial: 'COMMERCIAL',
-        agencia: 'AGENCY'
-    },
-    es: {
-        filmEditor: 'CINEMA & SERIES',
-        documentary: 'DOCUMENTAL',
-        advertising: 'PUBLICIDAD',
-        assistantEditor: 'ASISTENTE DE EDICIÓN',
-        about: 'CONTACTO',
-        editor: 'EDITOR',
-        montador: 'MONTADOR',
-        assistente: 'ASISTENTE DE MONTAJE',
-        curta: 'CORTOMETRAJE',
-        longa: 'LARGOMETRAJE',
-        serie: 'SERIE',
-        doc: 'DOCUMENTAL',
-        comercial: 'COMERCIAL',
-        agencia: 'AGENCIA'
-    }
-};
-
-// Initialize language on page load
-document.documentElement.lang = currentLang;
-categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
-updateMenuItems();
 
 function updateMenuItems() {
     const menuItems = document.querySelectorAll('.side-menu a[data-category]');
@@ -278,3 +187,36 @@ function updateMenuItems() {
         item.textContent = labels[category];
     });
 }
+
+function navigateTo(category) {
+    categoryLinks.forEach(l => l.classList.remove('active'));
+    const active = document.querySelector(`[data-category="${category}"]`);
+    if (active) active.classList.add('active');
+    body.setAttribute('data-category', category);
+    categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
+    if (category === 'advertising') {
+        headerLink.innerHTML = '<i class="fi fi-brands-vimeo"></i>';
+        headerLink.href = 'https://vimeo.com/joaobarbalho';
+    } else {
+        headerLink.innerHTML = '<i class="fi fi-brands-imdb"></i>';
+        headerLink.href = 'https://www.imdb.com/name/nm11060144/';
+    }
+    loadContent(category);
+}
+
+categoryLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(link.getAttribute('data-category'));
+        setTimeout(() => sideMenu.classList.remove('active'), 100);
+    });
+});
+
+document.getElementById('logoHome').addEventListener('click', () => {
+    navigateTo('film-editor');
+});
+
+document.documentElement.lang = currentLang;
+categoryLabel.textContent = 'MONTADOR AUDIOVISUAL';
+updateMenuItems();
+loadContent('film-editor');
