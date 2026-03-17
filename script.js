@@ -20,7 +20,7 @@ sideMenu.addEventListener('click', (e) => {
     }
 });
 
-// Portfolio Content
+// Portfolio Content (fallback)
 const portfolioContent = {
     'about': {
         pt: `
@@ -68,187 +68,7 @@ Teléfono: (11) 976621191
 Email: joaob.pos@gmail.com</p>
             </div>
         `
-    },
-    'film-editor': `
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop" alt="Projeto 1">
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>CURTA METRAGEM, 15MIN</p>
-                <p>DIR MARIA SANTOS</p>
-                <p>PRODUTORA INDEPENDENTE</p>
-                <a href="https://www.imdb.com/title/tt0111161/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=900&fit=crop" alt="Projeto 2">
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>LONGA METRAGEM, 90MIN</p>
-                <p>DIR FELIPE BLIDER</p>
-                <p>BOUTIQUE FILMES | PARIS FILMES</p>
-                <a href="https://www.imdb.com/title/tt0468569/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=900&fit=crop" alt="Projeto 3">
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>SÉRIE, 8 EPISÓDIOS</p>
-                <p>DIR CARLOS MENDES</p>
-                <p>NETFLIX | O2 FILMES</p>
-                <a href="https://www.imdb.com/title/tt0944947/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=600&h=900&fit=crop" alt="Projeto 4">
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>LONGA METRAGEM, 105MIN</p>
-                <p>DIR ANA PAULA COSTA</p>
-                <p>HBO | CONSPIRAÇÃO FILMES</p>
-                <a href="https://www.imdb.com/title/tt1375666/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=600&h=900&fit=crop" alt="Projeto 5">
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>CURTA METRAGEM, 20MIN</p>
-                <p>DIR PEDRO OLIVEIRA</p>
-                <p>SONY PICTURES</p>
-                <a href="https://www.imdb.com/title/tt0816692/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=900&fit=crop" alt="Projeto 6">
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>LONGA METRAGEM, 95MIN</p>
-                <p>DIR LUCAS FERREIRA</p>
-                <p>SENTIMENTAL FILMES</p>
-                <a href="https://www.imdb.com/title/tt0109830/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-    `,
-    'assistant-editor': `
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=900&fit=crop" alt="Projeto 1">
-            <div class="project-info">
-                <p>ASSISTENTE DE MONTAGEM</p>
-                <p>LONGA METRAGEM, 120MIN</p>
-                <p>DIR JOÃO SILVA</p>
-                <p>WARNER BROS</p>
-                <a href="https://www.imdb.com/title/tt0133093/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=900&fit=crop" alt="Projeto 2">
-            <div class="project-info">
-                <p>ASSISTENTE DE MONTAGEM</p>
-                <p>SÉRIE, 10 EPISÓDIOS</p>
-                <p>DIR MARIA COSTA</p>
-                <p>AMAZON PRIME</p>
-                <a href="https://www.imdb.com/title/tt1190634/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&h=900&fit=crop" alt="Projeto 3">
-            <div class="project-info">
-                <p>ASSISTENTE DE MONTAGEM</p>
-                <p>LONGA METRAGEM, 98MIN</p>
-                <p>DIR CARLOS MENDES</p>
-                <p>UNIVERSAL PICTURES</p>
-                <a href="https://www.imdb.com/title/tt0137523/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&h=900&fit=crop" alt="Projeto 4">
-            <div class="project-info">
-                <p>ASSISTENTE DE MONTAGEM</p>
-                <p>SÉRIE, 8 EPISÓDIOS</p>
-                <p>DIR ANA PAULA</p>
-                <p>HBO MAX</p>
-                <a href="https://www.imdb.com/title/tt2861424/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-    `,
-    'documentary': `
-        <div class="grid-item doc-item">
-            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&h=1080&fit=crop" alt="Documentário 1">
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>DOCUMENTÁRIO, 85MIN</p>
-                <p>DIR FELIPE BLIDER</p>
-                <p>NETFLIX ORIGINAL</p>
-                <a href="https://www.imdb.com/title/tt1877514/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item doc-item">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1920&h=1080&fit=crop" alt="Documentário 2">
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>DOCUMENTÁRIO, 72MIN</p>
-                <p>DIR MARIA SANTOS</p>
-                <p>HBO DOCUMENTARY FILMS</p>
-                <a href="https://www.imdb.com/title/tt2380247/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item doc-item">
-            <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=1920&h=1080&fit=crop" alt="Documentário 3">
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>SÉRIE DOCUMENTAL, 6 EPISÓDIOS</p>
-                <p>DIR CARLOS MENDES</p>
-                <p>AMAZON PRIME VIDEO</p>
-                <a href="https://www.imdb.com/title/tt5491994/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-        <div class="grid-item doc-item">
-            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1920&h=1080&fit=crop" alt="Documentário 4">
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>DOCUMENTÁRIO, 90MIN</p>
-                <p>DIR PEDRO OLIVEIRA</p>
-                <p>GLOBOPLAY ORIGINALS</p>
-                <a href="https://www.imdb.com/title/tt1778338/" target="_blank" class="imdb-btn">IMDb</a>
-            </div>
-        </div>
-    `,
-    'advertising': `
-        <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/148751763?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>COMERCIAL COCA-COLA, 30SEG</p>
-                <p>AGÊNCIA: OGILVY</p>
-            </div>
-        </div>
-        <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/179635463?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>COMERCIAL NIKE, 60SEG</p>
-                <p>AGÊNCIA: WIEDEN+KENNEDY</p>
-            </div>
-        </div>
-        <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/336812660?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
-            <div class="project-info">
-                <p>EDITOR</p>
-                <p>COMERCIAL APPLE, 45SEG</p>
-                <p>AGÊNCIA: TBWA\MEDIA ARTS LAB</p>
-            </div>
-        </div>
-        <div class="grid-item video-item">
-            <iframe src="https://player.vimeo.com/video/268896653?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
-            <div class="project-info">
-                <p>MONTADOR</p>
-                <p>COMERCIAL SAMSUNG, 30SEG</p>
-                <p>AGÊNCIA: LEO BURNETT</p>
-            </div>
-        </div>
-    `
+    }
 };
 
 // Load content based on category
@@ -290,15 +110,14 @@ async function loadContent(category) {
                     </div>
                 `).join('');
             } else {
-                content = portfolioContent[category];
+                content = portfolioContent['about'][currentLang];
             }
         } catch (error) {
-            console.error('Erro ao carregar projetos:', error);
-            content = portfolioContent[category];
+            content = portfolioContent['about'][currentLang];
         }
     }
     
-    portfolioGrid.innerHTML = content || portfolioContent['film-editor'];
+    portfolioGrid.innerHTML = content;
     
     // Add click handlers for mobile
     const gridItems = document.querySelectorAll('.grid-item');
@@ -325,14 +144,10 @@ async function loadProjects(category) {
         const data = await response.json();
         const allProjects = Array.isArray(data) ? data : (data.projects || []);
         
-        console.log('Projetos carregados:', allProjects);
-        
-        // Filtrar por categoria e ordenar
         const filtered = allProjects
             .filter(p => p.category === category)
             .sort((a, b) => (a.order || 0) - (b.order || 0));
         
-        console.log(`Projetos para categoria ${category}:`, filtered);
         return filtered;
     } catch (error) {
         console.error('Erro ao buscar projetos:', error);
